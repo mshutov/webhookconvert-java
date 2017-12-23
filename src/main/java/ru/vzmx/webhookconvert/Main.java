@@ -7,7 +7,8 @@ import io.undertow.server.handlers.BlockingHandler;
 
 public final class Main {
     private static final RoutingHandler ROUTES = Handlers.routing()
-            .post("/j2s/{p1}/{p2}/{p3}/{subDomain}/{project}/{version}", new BlockingHandler(JiraToSlackRoutes::jiraToSlack));
+            .post("/j2s/{p1}/{p2}/{p3}/{subDomain}/{project}/{version}", new BlockingHandler(ToSlackRoutes::fromJira))
+            .post("/ms2s/{p1}/{p2}/{p3}", new BlockingHandler(ToSlackRoutes::fromMS));
 
     private Main() {
     }
